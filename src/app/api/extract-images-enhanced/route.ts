@@ -219,10 +219,18 @@ export async function POST(request: NextRequest) {
 
         // Extract from all data attributes
         $('*').each((_, element) => {
-          const attributes = (element as any).attribs || {};
-          Object.keys(attributes).forEach(attr => {
-            if (attr.startsWith('data-') && attributes[attr]) {
-              const value = attributes[attr];
+          const $element = $(element);
+          // Get all attributes from the element
+          const attrs: Record<string, string> = {};
+          if ($element.get(0)) {
+            const node = $element.get(0) as { attribs?: Record<string, string> };
+            if (node.attribs) {
+              Object.assign(attrs, node.attribs);
+            }
+          }
+          Object.keys(attrs).forEach(attr => {
+            if (attr.startsWith('data-') && attrs[attr]) {
+              const value = attrs[attr];
               if (/\.(jpg|jpeg|png|gif|webp|svg|bmp|ico|avif|tiff)($|\?|#)/i.test(value)) {
                 processImageUrl(value, `Data Attribute: ${attr}`, `data-${attr}`);
               }

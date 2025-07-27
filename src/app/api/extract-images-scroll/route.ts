@@ -150,10 +150,17 @@ export async function POST(request: NextRequest) {
             }
 
             // Check data attributes for background images
-            const attributes = (element as any).attribs || {};
-            Object.keys(attributes).forEach(attr => {
-              if (attr.startsWith('data-') && attributes[attr]) {
-                const value = attributes[attr];
+            const $element = $(element);
+            const attrs: Record<string, string> = {};
+            if ($element.get(0)) {
+              const node = $element.get(0) as { attribs?: Record<string, string> };
+              if (node.attribs) {
+                Object.assign(attrs, node.attribs);
+              }
+            }
+            Object.keys(attrs).forEach(attr => {
+              if (attr.startsWith('data-') && attrs[attr]) {
+                const value = attrs[attr];
                 if (/\.(jpg|jpeg|png|gif|webp|svg|bmp|ico|avif|tiff)($|\?|#)/i.test(value) ||
                     value.includes('/image/') || value.includes('/img/') || value.includes('/photo/')) {
                   processImageUrl(value, `Data: ${attr}`, `data-${attr}`, attempt);

@@ -12,7 +12,7 @@ interface GoogleAdsenseProps {
 
 declare global {
   interface Window {
-    adsbygoogle: any[];
+    adsbygoogle: Array<Record<string, unknown>>;
   }
 }
 
