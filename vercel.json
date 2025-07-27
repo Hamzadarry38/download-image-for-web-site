@@ -1,12 +1,6 @@
 {
   "version": 2,
-  "name": "image-extractor",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
+  "name": "image-extractor-pro",
   "routes": [
     {
       "src": "/robots.txt",
