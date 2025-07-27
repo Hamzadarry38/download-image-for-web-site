@@ -1,0 +1,63 @@
+{
+  "name": "مستخرج الصور - Image Extractor",
+  "short_name": "مستخرج الصور",
+  "description": "أداة مجانية لاستخراج وتحميل جميع الصور من أي موقع ويب بسهولة وسرعة",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["utilities", "productivity", "tools"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "مستخرج الصور - الواجهة الرئيسية"
+    },
+    {
+      "src": "/screenshot-narrow.png",
+      "sizes": "640x1136",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "مستخرج الصور - النسخة المحمولة"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "استخراج الصور",
+      "short_name": "استخراج",
+      "description": "ابدأ استخراج الصور من موقع ويب",
+      "url": "/?action=extract",
+      "icons": [
+        {
+          "src": "/shortcut-extract.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}
