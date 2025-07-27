@@ -26,7 +26,7 @@ export default function HowToUsePage() {
             <section>
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">الخطوة 1: إدخال رابط الموقع</h2>
               <p className="text-gray-600 mb-4">
-                قم بنسخ رابط الموقع الذي تريد استخراج الصور منه ولصقه في حقل "رابط الموقع".
+                قم بنسخ رابط الموقع الذي تريد استخراج الصور منه ولصقه في حقل &ldquo;رابط الموقع&rdquo;.
               </p>
               <div className="bg-blue-50 p-4 rounded-lg">
                 <p className="text-blue-800">
@@ -56,7 +56,7 @@ export default function HowToUsePage() {
             <section>
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">الخطوة 3: استخراج الصور</h2>
               <p className="text-gray-600 mb-4">
-                اضغط على زر "استخراج الصور" وانتظر حتى يتم العثور على جميع الصور في الموقع.
+                اضغط على زر &ldquo;استخراج الصور&rdquo; وانتظر حتى يتم العثور على جميع الصور في الموقع.
               </p>
             </section>
 
@@ -66,7 +66,7 @@ export default function HowToUsePage() {
                 <li>يمكنك اختيار صور محددة أو تحديد الكل</li>
                 <li>استخدم الفلاتر لتصفية الصور حسب النوع</li>
                 <li>اضغط على أيقونة العين لعرض الصورة بحجم كبير</li>
-                <li>اضغط على "تحميل" لتحميل الصور المحددة كملف ZIP</li>
+                <li>اضغط على &ldquo;تحميل&rdquo; لتحميل الصور المحددة كملف ZIP</li>
               </ul>
             </section>
 

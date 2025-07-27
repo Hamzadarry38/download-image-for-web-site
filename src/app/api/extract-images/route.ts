@@ -287,18 +287,30 @@ export async function POST(request: NextRequest) {
     // Look for images in data-* attributes on any element
     $('*').each((_, element) => {
       const $el = $(element);
-      // Type assertion for cheerio element
-      const attributes = (element as any).attribs || {};
       
-      Object.keys(attributes).forEach(attr => {
-        if (attr.startsWith('data-') && attributes[attr]) {
-          const value = attributes[attr];
-          // Check if the attribute value looks like an image URL
-          if (/\.(jpg|jpeg|png|gif|webp|svg|bmp|ico|avif|tiff)($|\?|#)/i.test(value)) {
-            processImageUrl(value, `Data Attribute: ${attr}`);
-          }
+      // Get all data-* attributes using cheerio's methods
+      const dataAttributes = ['data-src', 'data-original', 'data-lazy', 'data-image', 'data-bg', 'data-background'];
+      
+      dataAttributes.forEach(attr => {
+        const value = $el.attr(attr);
+        if (value && /\.(jpg|jpeg|png|gif|webp|svg|bmp|ico|avif|tiff)($|\?|#)/i.test(value)) {
+          processImageUrl(value, `Data Attribute: ${attr}`);
         }
       });
+      
+      // Also check style attribute for background images
+      const style = $el.attr('style');
+      if (style) {
+        const bgMatches = style.match(/background(?:-image)?\s*:\s*url\(['"]?([^'"\)]+)['"]?\)/gi);
+        if (bgMatches) {
+          bgMatches.forEach(match => {
+            const urlMatch = match.match(/url\(['"]?([^'"\)]+)['"]?\)/);
+            if (urlMatch && urlMatch[1]) {
+              processImageUrl(urlMatch[1], 'CSS Background');
+            }
+          });
+        }
+      }
     });
 
     // Remove duplicates
